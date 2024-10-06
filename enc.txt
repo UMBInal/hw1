@@ -2,7 +2,6 @@ openssl enc -aes-128-ecb -e -in bmp24.bmp -out bmp24_ecb_encrypted.bmp -K 140b41
 openssl enc -aes-128-ecb -e -in greenland.bmp -out greenland_ecb_encrypted.bmp -K 140b41b22a29beb4061bda66b6747e14
 openssl enc -aes-128-ecb -e -in blackbuck.bmp -out blackbuck_ecb_encrypted.bmp -K 140b41b22a29beb4061bda66b6747e14
 
-
 openssl enc -aes-128-ctr -e -in bmp24.bmp -out bmp24_ctr_encrypted.bmp -K 140b41b22a29beb4061bda66b6747e14 -iv 36f18357be4dbd77f050515c73fcf9f2
 openssl enc -aes-128-ctr -e -in greenland.bmp -out greenland_ctr_encrypted.bmp -K 140b41b22a29beb4061bda66b6747e14 -iv 36f18357be4dbd77f050515c73fcf9f2
 openssl enc -aes-128-ctr -e -in blackbuck.bmp -out blackbuck_ctr_encrypted.bmp -K 140b41b22a29beb4061bda66b6747e14 -iv 36f18357be4dbd77f050515c73fcf9f2
@@ -14,3 +13,15 @@ dd if=blackbuck.bmp of=blackbuck_ecb_display.bmp bs=1 count=54 conv=notrunc
 dd if=bmp24.bmp of=bmp24_ctr_display.bmp bs=1 count=54 conv=notrunc
 dd if=greenland.bmp of=greenland_ctr_display.bmp bs=1 count=54 conv=notrunc
 dd if=blackbuck.bmp of=blackbuck_ctr_display.bmp bs=1 count=54 conv=notrunc
+
+
+openssl enc -d -aes-128-ecb -in bmp24_encrypted_ecb.bmp -out bmp24_decrypted_ecb.bmp -K 140b41b22a29beb4061bda66b6747e14
+openssl enc -d -aes-128-ecb -in greenland_encrypted_ecb.bmp -out greenland_decrypted_ecb.bmp -K 140b41b22a29beb4061bda66b6747e14
+openssl enc -d -aes-128-ecb -in blackbuck_encrypted_ecb.bmp -out blackbuck_decrypted_ecb.bmp -K 140b41b22a29beb4061bda66b6747e14
+
+
+openssl enc -d -aes-128-ctr -in bmp24_encrypted_ctr.bmp -out bmp24_decrypted_ctr.bmp -K 140b41b22a29beb4061bda66b6747e14 -iv 36f18357be4dbd77f050515c73fcf9f2
+openssl enc -d -aes-128-ctr -in greenland_encrypted_ctr.bmp -out greenland_decrypted_ctr.bmp -K 140b41b22a29beb4061bda66b6747e14 -iv 36f18357be4dbd77f050515c73fcf9f2
+openssl enc -d -aes-128-ctr -in blackbuck_encrypted_ctr.bmp -out blackbuck_decrypted_ctr.bmp -K 140b41b22a29beb4061bda66b6747e14 -iv 36f18357be4dbd77f050515c73fcf9f2
+
+cmp bmp24.bmp bmp24_decrypted_ecb.bmp
